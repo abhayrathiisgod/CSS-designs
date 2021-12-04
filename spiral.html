@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spiral Particles</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            min-height: 100vh;
+            background: rgb(34, 10, 13);
+            overflow: hidden;
+        }
+        .particle
+        {
+            position: relative;
+            min-width: 750px;
+            height: 750px;
+            margin: -100px;
+            transform-origin: right;
+            animation: colorChange 5s linear infinite;
+        }
+        .particle:nth-child(even)
+        {
+            transform-origin: right;
+        }
+        @keyframes colorChange 
+        {
+            0%
+            {
+                filter: hue-rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100%
+            {
+                filter: hue-rotate(360deg);
+                transform: rotate(360deg);
+            }
+
+        }
+        .particle span
+        {
+            position: absolute;
+            top: calc(80px * var(--i));
+            left: calc(80px * var(--i));
+            bottom: calc(80px * var(--i));
+            right: calc(80px * var(--i));
+        }
+        .particle span:before
+        {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -8px;
+            width: 15px;
+            height: 15px;
+            background: rgb(248, 3, 3);
+            border-radius: 50%;
+        }
+        .particle span:nth-child(3n + 1):before
+        {
+            background: rgb(0, 255, 242);
+            box-shadow: 0 0 20px rgb(137, 231, 238),
+                        0 0 40px rgb(120, 200, 206),
+                        0 0 60px rgba(134,255,0,1),
+                        0 0 80px rgba(134,255,0,1),
+                        0 0 0 8px rgba(134,255,0,.1);
+        }
+        .particle span:nth-child(3n + 2):before
+        {
+            background: rgba(255,214,0,1);
+            box-shadow: 0 0 20px rgba(255,214,0,1),
+                        0 0 40px rgb(240, 121, 224),
+                        0 0 60px rgba(255,214,0,1),
+                        0 0 80px rgb(231, 206, 77),
+                        0 0 0 8px rgba(255,214,0,.1);
+        }
+        .particle span:nth-child(3n + 3):before
+        {
+            background: rgba(0,226,255,1);
+            box-shadow: 0 0 20px rgb(241, 91, 179),
+                        0 0 40px rgba(0,226,255,1),
+                        0 0 60px rgb(222, 233, 69),
+                        0 0 80px rgba(0,226,255,1),
+                        0 0 0 8px rgba(0,226,255,.1);
+        }
+        .particle span:nth-child(3n+1)
+        {
+            animation: animate 10s alternate infinite;
+        }
+        .particle span:nth-child(3n+2)
+        {
+            animation: animate-reverse 3s alternate infinite;
+        }
+        .particle span:nth-child(3n+3)
+        {
+            animation: animate 8s alternate infinite;
+        }
+        @keyframes animate
+        {
+            0% 
+            {
+                transform: rotate(0deg);
+            }
+            100%
+            {
+                transform: rotate(360deg);
+            }
+        }
+        @keyframes animate-reverse
+        {
+            0% 
+            {
+                transform: rotate(360deg);
+            }
+            100%
+            {
+                transform: rotate(0deg);
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+        <div class="particle">
+            <span style="--i:1;"></span>
+            <span style="--i:2;"></span>
+            <span style="--i:3;"></span>
+        </div>
+        <div class="particle">
+            <span style="--i:1;"></span>
+            <span style="--i:2;"></span>
+            <span style="--i:3;"></span>
+        </div>
+        <div class="particle">
+            <span style="--i:1;"></span>
+            <span style="--i:2;"></span>
+            <span style="--i:3;"></span>
+        </div>
+        <div class="particle">
+            <span style="--i:1;"></span>
+            <span style="--i:2;"></span>
+            <span style="--i:3;"></span>
+        </div>
+</body>
+</html>
